@@ -44,3 +44,19 @@ class SaveSession /*implements Save */{//будет ошибка т.к. зако
         echo $date.' сохранено в сессию';
     }
 }
+
+
+//////////////////
+
+
+$content= 'контент';
+
+$db = new SaveDb();
+(new BaseClass())->save($db, $content);
+
+$file = new SaveFile();
+(new BaseClass())->save($file, $content);
+
+$ses = new SaveSession();//вызовит ошибку - must implement interface Save, instance of saveSession, т.к. не имплементирован интерфейс в классе SaveSession
+(new BaseClass())->save($ses, $content);
+
